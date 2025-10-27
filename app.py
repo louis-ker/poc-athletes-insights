@@ -1,12 +1,14 @@
 import streamlit as st
+import streamlit.components.v1 as components
+
 import pandas as pd
 import numpy as np
 from PIL import Image
 import base64
 from io import BytesIO
+import os
 
 st.set_page_config(layout="wide")
-st.title('Uber pickups in NYC')
 
 # Convertir l’image locale en base64
 def get_base64_of_image(image_path):
@@ -33,6 +35,13 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# Lis le contenu du fichier HTML
+with open("globe.html", "r", encoding="utf-8") as f:
+    html_content = f.read()
+
+# L'affiche directement dans la page Streamlit
+st.components.v1.html(html_content, height=720, width=1200, scrolling=False)
 
 
 DATE_COLUMN = 'date/time'
