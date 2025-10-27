@@ -10,7 +10,7 @@ import os
 
 st.set_page_config(layout="wide")
 
-# Convertir l’image locale en base64
+# Conversion base64
 def get_base64_of_image(image_path):
     img = Image.open(image_path)
     buffered = BytesIO()
@@ -19,7 +19,7 @@ def get_base64_of_image(image_path):
 
 img_base64 = get_base64_of_image("images/image.jpg")
 
-# Injecter l’image en HTML pleine largeur
+# IMAGE
 st.markdown(
     f"""
     <style>
@@ -36,11 +36,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Lis le contenu du fichier HTML
+# GLOBE
 with open("globe.html", "r", encoding="utf-8") as f:
     html_content = f.read()
 
-# L'affiche directement dans la page Streamlit
 st.components.v1.html(html_content, height=720, width=1200, scrolling=False)
 
 
